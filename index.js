@@ -139,6 +139,10 @@ app.get('/', async (req, res) => {
       });
     });
 
+    // 3. Supprimer tous les symboles LaTeX ($ et $$)
+    formattedResponse = formattedResponse.replace(/\$\$/g, '');
+    formattedResponse = formattedResponse.replace(/\$/g, '');
+
     // Envoyer la réponse formatée
     res.write(formattedResponse);
     res.end();
