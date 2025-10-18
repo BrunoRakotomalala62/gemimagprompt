@@ -1,0 +1,19 @@
+{
+  "name": "gemini-api",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "API for Gemini AI image analysis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.25.0",
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2"
+  }
+}
+
