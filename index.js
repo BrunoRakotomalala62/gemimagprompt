@@ -1,3 +1,4 @@
+
 import express from 'express';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
@@ -12,91 +13,138 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Stocker les historiques de conversation par UID
+const conversationHistory = new Map();
+
 // Fonction pour télécharger une image et la convertir en base64
 async function downloadImageAsBase64(url) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${response.statusText}`);
-    }
-    const buffer = await response.arrayBuffer();
-    const base64 = Buffer.from(buffer).toString('base64');
-    return base64;
-  } catch (error) {
-    throw new Error(`Error downloading image: ${error.message}`);
-  }
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch image: ${response.statusText}`);
+    }
+    const buffer = await response.arrayBuffer();
+    const base64 = Buffer.from(buffer).toString('base64');
+    return base64;
+  } catch (error) {
+    throw new Error(`Error downloading image: ${error.message}`);
+  }
 }
 
 // Route GET pour analyser une image
 app.get('/', async (req, res) => {
-  try {
-    const { question, image, uid } = req.query;
+  try {
+    const { question, image, uid } = req.query;
 
-    // Validation des paramètres
-    if (!question || !uid) {
-      return res.status(400).json({
-        error: 'Missing required parameters: question and uid are required'
-      });
-    }
+    // Validation des paramètres
+    if (!question || !uid) {
+      return res.status(400).json({
+        error: 'Missing required parameters: question and uid are required'
+      });
+    }
 
-    // Initialiser Gemini AI
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
+    // Vérifier si l'utilisateur veut effacer l'historique
+    if (question.toLowerCase().trim() === 'clear') {
+      conversationHistory.delete(uid);
+      return res.json({ 
+        message: 'Conversation history cleared',
+        uid: uid 
+      });
+    }
 
-    const parts = [
-      { text: question }
-    ];
+    // Récupérer ou initialiser l'historique de conversation pour cet UID
+    if (!conversationHistory.has(uid)) {
+      conversationHistory.set(uid, []);
+    }
+    const history = conversationHistory.get(uid);
 
-    // Si une image est fournie, l'ajouter
-    if (image) {
-      let imageData;
-      
-      // Si l'image est une URL, la télécharger et la convertir en base64
-      if (image.startsWith('http://') || image.startsWith('https://')) {
-        imageData = await downloadImageAsBase64(image);
-      } else {
-        // Si c'est déjà en base64
-        imageData = image;
-      }
+    // Initialiser Gemini AI
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
 
-      // Ajouter l'image en base64
-      parts.push({
-        inlineData: {
-          mimeType: 'image/jpeg',
-          data: imageData,
-        },
-      });
-    }
+    // Construire les parts pour cette requête
+    const currentParts = [
+      { text: question }
+    ];
 
-    const result = await model.generateContentStream(parts);
+    // Si une image est fournie, l'ajouter
+    if (image) {
+      let imageData;
+      
+      // Si l'image est une URL, la télécharger et la convertir en base64
+      if (image.startsWith('http://') || image.startsWith('https://')) {
+        imageData = await downloadImageAsBase64(image);
+      } else {
+        // Si c'est déjà en base64
+        imageData = image;
+      }
 
-    // Envoyer la réponse en streaming
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.setHeader('Transfer-Encoding', 'chunked');
+      // Ajouter l'image en base64
+      currentParts.push({
+        inlineData: {
+          mimeType: 'image/jpeg',
+          data: imageData,
+        },
+      });
+    }
 
-    for await (const chunk of result.stream) {
-      const chunkText = chunk.text();
-      res.write(chunkText);
-    }
+    // Créer le contenu complet avec l'historique
+    const allParts = [...history, ...currentParts];
 
-    res.end();
+    const result = await model.generateContentStream(allParts);
 
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({
-      error: 'Internal server error',
-      message: error.message,
-    });
-  }
+    // Envoyer la réponse en streaming
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Transfer-Encoding', 'chunked');
+
+    let fullResponse = '';
+    for await (const chunk of result.stream) {
+      const chunkText = chunk.text();
+      fullResponse += chunkText;
+      res.write(chunkText);
+    }
+
+    res.end();
+
+    // Ajouter la question et la réponse à l'historique
+    history.push(...currentParts);
+    history.push({ text: fullResponse });
+
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({
+      error: 'Internal server error',
+      message: error.message,
+    });
+  }
+});
+
+// Route pour obtenir l'historique d'une conversation
+app.get('/history', (req, res) => {
+  const { uid } = req.query;
+  
+  if (!uid) {
+    return res.status(400).json({
+      error: 'Missing required parameter: uid'
+    });
+  }
+
+  const history = conversationHistory.get(uid) || [];
+  res.json({
+    uid: uid,
+    messageCount: history.length,
+    hasHistory: history.length > 0
+  });
 });
 
 // Route de santé
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', uid: req.query.uid || 'none' });
+  res.json({ status: 'ok', uid: req.query.uid || 'none' });
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`API ready at http://0.0.0.0:${PORT}/?question=YOUR_QUESTION&image=IMAGE_URL&uid=USER_ID`);
+  console.log(`Server running on port ${PORT}`);
+  console.log(`API ready at http://0.0.0.0:${PORT}/?question=YOUR_QUESTION&image=IMAGE_URL&uid=USER_ID`);
+  console.log(`Clear conversation: http://0.0.0.0:${PORT}/?question=clear&uid=USER_ID`);
+  console.log(`Check history: http://0.0.0.0:${PORT}/history?uid=USER_ID`);
 });
-
