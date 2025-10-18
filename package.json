@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "API for Gemini AI image analysis",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "node server.js"
   },
