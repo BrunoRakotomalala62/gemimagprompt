@@ -1,0 +1,133 @@
+Est ce que possible de modifier la réponse du format du bot ?
+
+
+Si actuellement sa réponse est :
+
+✅AMPINGA D'OR AI MADAGASCAR🇲🇬
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✍️Réponse 👇
+
+Bonjour ! C'est un plaisir de vous aider avec cette équation.
+
+Nous allons résoudre l'équation linéaire suivante pour trouver la valeur de x :
+
+4x - 8 = 0
+
+### Étapes de la résolution :
+
+1.  **Isoler le terme contenant x** (on ajoute 8 aux deux côtés de l'équation) :
+    4x = 8
+
+2.  **Résoudre pour x** (on divise les deux côtés par 4) :
+    x = 8/4
+    x = 2
+
+***
+
+**La solution de l'équation 4x - 8 = 0 est x = 2.**
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧠 Powered by 👉@Bruno | Ampinga AI
+
+
+
+
+Mais comment mettre comme ceci en évitant de s'affiche le symbole
+
+
+✅AMPINGA D'OR AI MADAGASCAR🇲🇬
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✍️Réponse 👇
+
+Bonjour ! C'est un plaisir de vous aider avec cette équation.
+
+Nous allons résoudre l'équation linéaire suivante pour trouver la valeur de x :
+
+4x - 8 = 0
+
+𝗘X𝗘𝗥𝗖𝗜𝗖𝗘 𝟭 : 𝗖𝗵𝗼𝗶𝘀𝗶𝘀 𝗹𝗮 𝗯𝗼𝗻𝗻𝗲 𝗿é𝗽𝗼𝗻𝘀𝗲 (Étapes de la résolution) :
+
+1.  **Isoler le terme contenant x** (on ajoute 8 aux deux côtés de l'équation) :
+    4x = 8
+
+2.  **Résoudre pour x** (on divise les deux côtés par 4) :
+    x = 8/4
+    x = 2
+
+***
+
+**La solution de l'équation 4x - 8 = 0 est x = 2.**
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧠 Powered by 👉@Bruno | Ampinga AI
+
+
+
+Changement pour la commande gemini.js dans le répertoire auto/gemini.js 
+
+
+
+
+
+
+
+
+
+✅🎯 𝗘𝗫𝗘𝗥𝗖𝗜𝗖𝗘𝗦 𝗗'𝗘𝗡𝗧𝗥𝗔Î𝗡𝗘𝗠𝗘𝗡𝗧
+
+𝗘𝗫𝗘𝗥𝗖𝗜𝗖𝗘 𝟭 : 𝗖𝗵𝗼𝗶𝘀𝗶𝘀 𝗹𝗮 𝗯𝗼𝗻𝗻𝗲 𝗿é𝗽𝗼𝗻𝘀𝗲
+
+ 𝗘𝗫𝗘𝗥𝗖𝗜𝗖𝗘 𝟮 : 𝗩𝗿𝗮𝗶 𝗼𝘂 𝗙𝗮𝘂𝘅 ?
+
+
+𝗘𝗫𝗘𝗥𝗖𝗜𝗖𝗘 𝟯 : 𝗝𝘂𝘀𝘁𝗶𝗳𝗶𝗲 𝘁𝗼𝗻 𝗰𝗵𝗼𝗶𝘅
+
+
+
+Veuillez créer le style de texte qui suit trois décimales consécutives et supprimer les trois décimales ###
+
+
+De plus, le texte à l’intérieur des deux étoiles extrêmes doit être en gras avec une couleur différente. 
+
+** STYLES GRAS**
+
+ET enlever ** 
+
+Donc STYLES GRAS 
+
+
+Simplement
+
+Par exemple
+
+
+✅🎯 𝗘𝗫𝗘𝗥𝗖𝗜𝗖𝗘𝗦 𝗗'𝗘𝗡𝗧𝗥𝗔Î𝗡𝗘𝗠𝗘𝗡𝗧
+
+𝗘𝗫𝗘𝗥𝗖𝗜𝗖𝗘 𝟭 : 𝗖𝗵𝗼𝗶𝘀𝗶𝘀 𝗹𝗮 𝗯𝗼𝗻𝗻𝗲 𝗿é𝗽𝗼𝗻𝘀𝗲
+𝘊𝘰𝘮𝘱𝘭è𝘵𝘦 𝘢𝘷𝘦𝘤 : 𝘤𝘦, 𝘤𝘦𝘵, 𝘤𝘦𝘵𝘵𝘦, 𝘤𝘦𝘴 𝘰𝘶 𝘴𝘦𝘴
+
+1. Paul a perdu _____ clés dans _____ jardin.
+2. _____ histoire est vraie, je connais _____ personnages.
+3. _____ enfant joue avec _____ jouets préférés.
+4. Regarde _____ oiseau sur _____ arbre !
+5. Marie adore _____ nouvelle école et _____ professeurs.
+6. _____ ordinateur appartient à mon frère, il y range _____ photos.
+7. _____ étudiants révisent pour _____ examens.
+8. _____ homme promène _____ chiens tous les matins.
+9. _____ fleurs sentent bon, leur parfum embaume _____ pétales.
+10. _____ acteur est célèbre pour _____ nombreux films.
+
+ 𝗘𝗫𝗘𝗥𝗖𝗜𝗖𝗘 𝟮 : 𝗩𝗿𝗮𝗶 𝗼𝘂 𝗙𝗮𝘂𝘅 ?
+𝘋𝘪𝘴 𝘴𝘪 𝘤𝘦𝘴 𝘱𝘩𝘳𝘢𝘴𝘦𝘴 𝘴𝘰𝘯𝘵 𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘦𝘴
+
+1. Ces garçon joue au football. ✅/❌
+2. Il range ses affaires dans cet armoire. ✅/❌  
+3. Cette homme est très gentil. ✅/❌
+4. Ses livres sont sur cette table. ✅/❌
+5. Ce enfants sont sages. ✅/❌
+
+𝗘𝗫𝗘𝗥𝗖𝗜𝗖𝗘 𝟯 : 𝗝𝘂𝘀𝘁𝗶𝗳𝗶𝗲 𝘁𝗼𝗻 𝗰𝗵𝗼𝗶𝘅
+𝘌𝘹𝘱𝘭𝘪𝘲𝘶𝘦 𝘗𝘖𝘜𝘙𝘘𝘜𝘖𝘐 𝘵𝘶 𝘢𝘴 𝘤𝘩𝘰𝘪𝘴𝘪 𝘤𝘦𝘵𝘵𝘦 𝘳é𝘱𝘰𝘯𝘴𝘦
+
+- _____ élève révise _____ leçons.
+- _____ animaux vivent dans _____ habitat naturel.
